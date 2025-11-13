@@ -4,4 +4,9 @@ Checks: '-*,
   readability-*,
   modernize-*,
   performance-*,
-  portability-*'
+  portability-*,
+  cert-*,
+  misc-*'
+WarningsAsErrors: ''
+HeaderFilterRegex: '.*'
+FormatStyle: none

@@ -1,0 +1,8 @@
+secdev
+*.o
+data1
+data2
+*.a
+*.so
+.vscode/
+*.tmp
