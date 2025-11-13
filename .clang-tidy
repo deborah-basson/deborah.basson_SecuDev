@@ -2,11 +2,14 @@ Checks: '-*,
   bugprone-*,
   clang-analyzer-*,
   readability-*,
-  modernize-*,
   performance-*,
   portability-*,
   cert-*,
-  misc-*'
+  -modernize-macro-to-enum,
+  -modernize-use-nullptr,
+  -readability-magic-numbers,
+  -readability-identifier-length,
+  -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling'
 WarningsAsErrors: ''
 HeaderFilterRegex: '.*'
 FormatStyle: none

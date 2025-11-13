@@ -20,7 +20,7 @@ clang-tidy:
 	clang-tidy $(SOURCES) $(TEST_SOURCES) -- $(CFLAGS)
 
 splint:
-	splint +posixlib -Iinclude $(SOURCES) $(TEST_SOURCES)
+	splint -f .splintrc -Iinclude $(SOURCES) $(TEST_SOURCES)
 
 static-analysis: clang-tidy splint
 

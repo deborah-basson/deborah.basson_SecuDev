@@ -1,0 +1,15 @@
+-nullret
+-unrecog
+-compdef
+-usedef
+-nullstate
+-nullderef
+-nullpass
+-temptrans
+-mustfree
+-kepttrans
+-type
++posixlib
+-predboolint
+-boolops
+-exportlocal

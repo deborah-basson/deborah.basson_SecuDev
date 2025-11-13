@@ -7,54 +7,62 @@ void test_basic_concatenate(void) {
     const char* foo = "foo";
     const char* bar = "bar";
 
-    char* result = concatenate_data(foo, bar, 100);
+    char* result = concatenate_data(foo, bar, MAX_INPUT_SIZE);
 
     assert(result != NULL);
     assert(strcmp(result, "foobar") == 0);
 
-    printf("test_basic_concatenate: PASSED\n");
+    (void)printf("[PASSED] test_basic_concatenate\n");
 }
 
 void setup(void) {
-    FILE* f1 = fopen("data1", "w");
-    FILE* f2 = fopen("data2", "w");
+    FILE* file1 = fopen("data1", "w");
+    FILE* file2 = fopen("data2", "w");
 
-    if (f1 != NULL) {
-        fprintf(f1, "hello");
-        fclose(f1);
+    if (file1 != NULL) {
+        (void)fprintf(file1, "hello");
+        (void)fclose(file1);
     }
 
-    if (f2 != NULL) {
-        fprintf(f2, "world");
-        fclose(f2);
+    if (file2 != NULL) {
+        (void)fprintf(file2, "world");
+        (void)fclose(file2);
     }
 }
 
 void teardown(void) {
-    remove("data1");
-    remove("data2");
+    (void)remove("data1");
+    (void)remove("data2");
 }
 
 void test_concatenate_from_files(void) {
     setup();
 
-    char data1[100] = {0};
-    char data2[100] = {0};
+    char data1[MAX_INPUT_SIZE] = {0};
+    char data2[MAX_INPUT_SIZE] = {0};
 
-    FILE* f1 = fopen("data1", "r");
-    FILE* f2 = fopen("data2", "r");
+    FILE* file1 = fopen("data1", "r");
+    FILE* file2 = fopen("data2", "r");
 
-    if (f1 != NULL && f2 != NULL) {
-        fgets(data1, sizeof(data1), f1);
-        fgets(data2, sizeof(data2), f2);
-        fclose(f1);
-        fclose(f2);
+    if (file1 != NULL && file2 != NULL) {
+        (void)fgets(data1, sizeof(data1), file1);
+        (void)fgets(data2, sizeof(data2), file2);
+        (void)fclose(file1);
+        (void)fclose(file2);
 
-        char* result = concatenate_data(data1, data2, 100);
+        char* result = concatenate_data(data1, data2, MAX_INPUT_SIZE);
         assert(result != NULL);
         assert(strcmp(result, "helloworld") == 0);
 
-        printf("test_concatenate_from_files: PASSED\n");
+        (void)printf("[PASSED] test_concatenate_from_files\n");
+    } else {
+        if (file1 != NULL) {
+            (void)fclose(file1);
+        }
+        if (file2 != NULL) {
+            (void)fclose(file2);
+        }
+        (void)fprintf(stderr, "[FAILED] test_concatenate_from_files : Failed to open test files\n");
     }
 
     teardown();
@@ -63,6 +71,6 @@ void test_concatenate_from_files(void) {
 int main(void) {
     test_basic_concatenate();
     test_concatenate_from_files();
-    printf("All tests passed!\n");
+    (void)printf("[DONE] Testsuite execution finished.\n");
     return 0;
 }
