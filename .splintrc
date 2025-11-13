@@ -13,3 +13,11 @@
 -predboolint
 -boolops
 -exportlocal
+-retvalint
+-retvalother
+-nullassign
+-mayaliasunique
+-preproc
+-systemunrecog
+-declundef
+-statictrans
