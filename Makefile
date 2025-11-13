@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=c23 -Wall -Wextra -pedantic -Iinclude -D_POSIX_C_SOURCE=200809L
+CFLAGS = -std=c2x -Wall -Wextra -pedantic -Iinclude -D_POSIX_C_SOURCE=200809L
 SOURCES = $(wildcard src/*.c)
 TEST_SOURCES = $(wildcard tests/*.c)
 OBJECTS = $(SOURCES:.c=.o)
